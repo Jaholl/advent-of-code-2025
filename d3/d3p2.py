@@ -13,8 +13,9 @@ for battery_bank in banks:
     found = []
 
     values = [int(x) for x in battery_bank]
-    found.append(max(values[:-1]))
-    values = values[values.index(max(values[:-1]))+1:]
+    for x in range(11, 0,-1):
+        found.append(max(values[:-x]))
+        values = values[values.index(max(values[:-x]))+1:]
     found.append(max(values))
     number = int(''.join([str(x) for x in found]))
     print("Biggest value found:\t", number)
